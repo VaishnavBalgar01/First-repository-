@@ -1,0 +1,19 @@
+import {createReadStream, createWriteStream} from "fs";
+import path from "path";
+
+const inputFilePath = path.join(import.meta.dirname, "inputt.txt");
+const outputFilePath = path.join(import.meta.dirname, "outputt.txt");
+
+const readableStream = createReadStream(inputFilePath, {encoding: "utf-8", highWaterMark: 16});
+
+const writableStream = createWriteStream(outputFilePath);
+
+readableStream.pipe(writableStream);
+
+
+readableStream.on("error", (err) => console.error("Error: ", err));
+writableStream.on("error", (err) => console.error("Error: ", err));
+
+
+
+//highWaterMark: 16= is used for size of chunks

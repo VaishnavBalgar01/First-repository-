@@ -1,0 +1,5 @@
+const path = require("path")
+let a=path.join(__dirname,"ace.txt")
+let b=path.resolve("ace.txt")
+console.log(a)
+console.log(b)
